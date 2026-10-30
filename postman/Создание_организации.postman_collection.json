@@ -1,0 +1,3695 @@
+{
+  "info": {
+    "_postman_id": "1d26fff5-8215-4794-b795-de6931636659",
+    "name": "Создание организации",
+    "description": "Как запустить проверки:  \n1\\. Получите токен запросом POST /authenticate (username: user, password: user).  \n2\\. Вставьте токен во вкладку Authorization этой коллекции (Auth Type: Bearer Token, поле Token, слово Bearer писать не нужно). Все запросы берут токен оттуда.  \n3\\. Запускайте любой запрос, больше ничего менять не нужно.\n\nНайденные расхождения:  \n1\\. name: число вместо строки (папка 01 name). Ожидалось 400 (поле String), получено 200, организация создана.  \n2\\. inn: число вместо строки (папка 02 inn). Ожидалось 400 (поле String), получено 200, организация создана.  \n3\\. orgn: число вместо строки (папка 03 orgn). Ожидалось 400 (поле String), получено 200, организация создана.  \n4\\. address: число вместо строки (папка 04 address). Ожидалось 400 (поле String), получено 200, организация создана.  \n5\\. phone: число вместо строки (папка 05 phone). Ожидалось 400 (поле String), получено 200, организация создана.  \n6\\. head.firstName: число вместо строки (папка 07 head.firstName). Ожидалось 400 (поле String), получено 200, организация создана.  \n7\\. head.lastName: число вместо строки (папка 08 head.lastName). Ожидалось 400 (поле String), получено 200, организация создана.  \n8\\. auth: неверный токен, значение «abc123» (папка 10 Авторизация). Ожидалось 401, получено 500 Internal Server Error.EndFragment  \n9\\. method: GET вместо POST (папка 12 Тело запроса и метод). Ожидалось 405, получено 500 Internal Server Error («Request method 'GET' is not supported»).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "55573963",
+    "_collection_link": "https://go.postman.co/collection/55573963-1d26fff5-8215-4794-b795-de6931636659?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "00 Основной сценарий",
+      "item": [
+        {
+          "name": "00 Основной сценарий",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Центральная энергетическая таможня\",\r\n  \"inn\": \"{{$timestamp}}96\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"ул. Стоянова, дом 12\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "01 name",
+      "item": [
+        {
+          "name": "name: 3 символа => 200",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}01\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"ул. Стоянова, дом 12\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "name: 2 символа => 200",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Аб\",\r\n  \"inn\": \"{{$timestamp}}02\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"ул. Стоянова, дом 12\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "name: 99 символов => 200",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"ООО «Центральная энергетическая таможня Северо-Восточного федерального округа Российской Федерации»\",\r\n  \"inn\": \"{{$timestamp}}03\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"ул. Стоянова, дом 12\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "name: 100 символов => 200",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"ООО «Центральная энергетическая таможня Северо-Восточного федерального округа Российской Федерации».\",\r\n  \"inn\": \"{{$timestamp}}04\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"ул. Стоянова, дом 12\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "name: 1 символ  => 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"А\",\r\n  \"inn\": \"{{$timestamp}}05\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"ул. Стоянова, дом 12\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "name: 101 символ => 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"ООО «Центральная энергетическая таможня Северо-Восточного федерального округа Российской Федерациии».\",\r\n  \"inn\": \"{{$timestamp}}06\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"ул. Стоянова, дом 12\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "name: не передан => 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"inn\": \"{{$timestamp}}07\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"ул. Стоянова, дом 12\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "name: пустая строка => 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"\",\r\n  \"inn\": \"{{$timestamp}}08\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"ул. Стоянова, дом 12\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "name: null => 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": null,\r\n  \"inn\": \"{{$timestamp}}09\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"ул. Стоянова, дом 12\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "name: число вместо строки => 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": 123,\r\n  \"inn\": \"{{$timestamp}}10\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"ул. Стоянова, дом 12\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "02 inn",
+      "item": [
+        {
+          "name": "inn: 10 цифр с ОГРН => 200",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}01\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"ул. Стоянова, дом 12\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "inn: 12 цифр с ОГРН => 200",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}98\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"ул. Стоянова, дом 12\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "inn: не передан => 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"ул. Стоянова, дом 12\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "inn: пустая строка => 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"ул. Стоянова, дом 12\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "inn: null => 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": null,\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"ул. Стоянова, дом 12\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "inn: 9 цифр => 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"123456789\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"ул. Стоянова, дом 12\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "inn: 11 цифр => 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"12345678902\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"ул. Стоянова, дом 12\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "inn: 13 цифр => 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"1234567890211\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"ул. Стоянова, дом 12\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "inn: буквы => 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"77215810AB\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"ул. Стоянова, дом 12\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "inn: число вместо строки => 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": {{$timestamp}},\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"ул. Стоянова, дом 12\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "03 orgn",
+      "item": [
+        {
+          "name": "ogrn: не передан при ИНН 12 цифр => 200",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}11\",\r\n  \"address\": \"ул. Стоянова, дом 12\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ogrn: 13 цифр при ИНН 12 цифр => 200",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}12\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"ул. Стоянова, дом 12\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ogrn: не передан при ИНН 10 цифр => 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}\",\r\n  \"address\": \"ул. Стоянова, дом 12\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ogrn: пустая строка при ИНН 10 цифр => 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}\",\r\n  \"ogrn\": \"\",\r\n  \"address\": \"ул. Стоянова, дом 12\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ogrn: 12 цифр => 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}\",\r\n  \"ogrn\": \"123456789123\",\r\n  \"address\": \"ул. Стоянова, дом 12\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ogrn: 14 цифр => 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}\",\r\n  \"ogrn\": \"12345678912344\",\r\n  \"address\": \"ул. Стоянова, дом 12\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ogrn: буквы => 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}\",\r\n  \"ogrn\": \"1234567891авг\",\r\n  \"address\": \"ул. Стоянова, дом 12\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ogrn: число вместо строки=> 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}13\",\r\n  \"ogrn\": 1234567891111,\r\n  \"address\": \"ул. Стоянова, дом 12\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "04 address",
+      "item": [
+        {
+          "name": "address: 5 символов => 200",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}15\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "address: 6 символов => 200",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}16\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банкар\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "address: 254 символа=> 200",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}17\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"аааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааа\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "address: 255 символа=> 200",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}18\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"ааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааа\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "address: 4 символа=> 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}19\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банк\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "address: 256 символов=> 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}20\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"аааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааа\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "address: не передан=> 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}21\",\r\n  \"ogrn\": \"1072072854002\",\r\n\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "address: пустая строка=> 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}22\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "address: null=> 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}23\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": null,\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "address: число вместо строки=> 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}24\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": 123456,\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "05 phone",
+      "item": [
+        {
+          "name": "phone: +7 и 10 цифр => 200",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}24\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": \"+79123455789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "phone: 7 и 10 цифр => 200",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}25\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": \"79123455789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "phone: 8 и 10 цифр => 200",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}26\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": \"89123455789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "phone: не передан=> 200",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}27\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "phone: 9 цифр после префикса=> 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}28\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": \"+7912345678\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "phone: 11 цифр после префикса=> 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}29\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": \"+791234567811\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "phone: буквы=> 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}30\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": \"+79123456fdu\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "phone: число вместо строки=> 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}31\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": 79123456777,\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "06 head",
+      "item": [
+        {
+          "name": "head: один руководитель, только обязательные поля=> 200",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}32\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": \"+79123455789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "head: два руководителя=> 200",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}33\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": \"+79123455789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"lastName\": \"Иванов\"\r\n    },\r\n\t{\r\n      \"firstName\": \"Иван\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "head: не передан=> 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}34\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": \"+79123455789\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "head: пустой массив=> 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}36\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": \"+79123455789\",\r\n  \"head\": []\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "head: объект вместо массива=> 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}37\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": \"+79123455789\",\r\n  \"head\": {\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "head: у второго руководителя нет lastName=> 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}38\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": \"+79123455789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"lastName\": \"Иванов\"\r\n    },\r\n\t{\r\n      \"firstName\": \"Иван\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "07 head.firstName",
+      "item": [
+        {
+          "name": "firstName: 2 символа=> 200",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}40\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": \"+79123455789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Ив\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "firstName: 3 символа=> 200",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}41\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": \"+79123455789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Ива\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "firstName: 59 символов=> 200",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}42\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": \"+79123455789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"ааааааааааааааааааааааааааааааааааааааааааааааааааааааааааа\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "firstName: 60 символов=> 200",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}43\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": \"+79123455789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"аааааааааааааааааааааааааааааааааааааааааааааааааааааааааааа\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "firstName: 61 символ=> 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}43\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": \"+79123455789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"аааааааааааааааааааааааааааааааааааааааааааааааааааааааааааа\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "firstName: 1 символ=> 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}50\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": \"+79123455789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"И\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "firstName: не передан=> 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}44\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": \"+79123455789\",\r\n  \"head\": [\r\n    {\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "firstName: пустая строка=> 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}46\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": \"+79123455789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "firstName: null=> 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}48\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": \"+79123455789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": null,\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "firstName: число вместо строки=> 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}49\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": \"+79123455789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": 123,\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "08 head.lastName",
+      "item": [
+        {
+          "name": "lastName: 2 символа=> 200",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}52\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": \"+79123455789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Ива\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Ив\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "lastName: 3 символа=> 200",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}53\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": \"+79123455789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Ива\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Ива\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "lastName: 59 символов=> 200",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}54\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": \"+79123455789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Ива\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"ааааааааааааааааааааааааааааааааааааааааааааааааааааааааааа\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "lastName: 60 символов=> 200",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}55\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": \"+79123455789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Ива\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"аааааааааааааааааааааааааааааааааааааааааааааааааааааааааааа\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "lastName: 61 символ=> 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}56\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": \"+79123455789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Ива\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"ааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааа\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "lastName: 1 символ=> 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}57\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": \"+79123455789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Ива\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"а\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "lastName: не передан=> 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}58\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": \"+79123455789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Ива\",\r\n      \"middleName\": \"Иванович\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "lastName: пустая строка=> 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}59\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": \"+79123455789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Ива\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "lastName: null=> 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}61\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": \"+79123455789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Ива\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": null\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "lastName: число вместо строки=> 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}62\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": \"+79123455789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Ива\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": 123\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "09 head.middleName",
+      "item": [
+        {
+          "name": "middleName: 2 символа=> 200",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}63\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": \"+79123455789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Ива\",\r\n      \"middleName\": \"Ив\",\r\n      \"lastName\": \"Ив\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "middleName: 3 символа=> 200",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}64\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": \"+79123455789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Ива\",\r\n      \"middleName\": \"Ива\",\r\n      \"lastName\": \"Ив\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "middleName: 59 символов=> 200",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}65\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": \"+79123455789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Ива\",\r\n      \"middleName\": \"ааааааааааааааааааааааааааааааааааааааааааааааааааааааааааа\",\r\n      \"lastName\": \"Ив\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "middleName: 60 символов=> 200",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}66\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": \"+79123455789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Ива\",\r\n      \"middleName\": \"аааааааааааааааааааааааааааааааааааааааааааааааааааааааааааа\",\r\n      \"lastName\": \"Ив\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "middleName: не передан => 200",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}67\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": \"+79123455789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Ива\",\r\n      \"lastName\": \"Ив\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "middleName: 61 символ=> 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}68\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": \"+79123455789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Ива\",\r\n      \"middleName\": \"ааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааа\",\r\n      \"lastName\": \"Ив\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "middleName: 1 символ=> 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}69\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"Банка\",\r\n  \"phone\": \"+79123455789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Ива\",\r\n      \"middleName\": \"а\",\r\n      \"lastName\": \"Ив\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "10 Авторизация",
+      "item": [
+        {
+          "name": "auth: без заголовка Authorization => 401",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}01\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"ул. Стоянова, дом 12\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "auth: неверный токен => 401",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": " Bearer abc123",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}01\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"ул. Стоянова, дом 12\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "auth: пустой токен после Bearer => 401",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}01\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"ул. Стоянова, дом 12\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "auth: без слова Bearer => 401",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNzkyNDAyMzM5LCJpYXQiOjE3OTIzODQzMzl9.2YgyXGD5N5idgXcLekWn09jAeE-QDfS_vxW4iJo4pEX8lUer50Ik8GCVwW2L0OVuSh9Jf8Pi2H1UWXd1bUFANA"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"{{$timestamp}}01\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"ул. Стоянова, дом 12\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "11 Дубликаты",
+      "item": [
+        {
+          "name": "Подготовка: создание организации, ИНН 12 цифр",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"500000000001\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"ул. Стоянова, дом 12\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "inn: повтор 12 цифр => 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Абв\",\r\n  \"inn\": \"500000000001\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"ул. Стоянова, дом 12\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "12 Тело запроса и метод",
+      "item": [
+        {
+          "name": "body: пустое тело => 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "body: пустой объект => 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "body: невалидный JSON=> 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Центральная энергетическая таможня\",\r\n  \"inn\": \"{{$timestamp}}80\",\r\n  \"ogrn\": \"1072072854002\",\r\n  \"address\": \"ул. Стоянова, дом 12\",\r\n  \"phone\": \"+79123456789\",\r\n  \"head\": [\r\n    {\r\n      \"firstName\": \"Иван\",\r\n      \"middleName\": \"Иванович\",\r\n      \"lastName\": \"Иванов\"\r\n    }\r\n  ]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "method: GET вместо POST=> 405",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\t\"name\": \"Центральная энергетическая таможня\",\r\n\t\"inn\": \"{{$timestamp}}81\",\r\n\t\"ogrn\": \"1072072854002\",\r\n\t\"address\": \"ул. Стоянова, дом 12\",\r\n\t\"phone\": \"+79123456789\",\r\n\t\"head\": [\r\n\t\t{\r\n\t\t\t\"firstName\": \"Иван\",\r\n\t\t\t\"middleName\": \"Иванович\",\r\n\t\t\t\"lastName\": \"Иванов\"\r\n\t\t}\r\n\t]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://153.76.170.231:8080/api/v1/de/organization",
+              "protocol": "http",
+              "host": [
+                "153",
+                "76",
+                "170",
+                "231"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "de",
+                "organization"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "Вставьте_токен",
+        "type": "string"
+      }
+    ]
+  }
+}
